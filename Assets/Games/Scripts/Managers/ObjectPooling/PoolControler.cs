@@ -67,8 +67,8 @@ public enum ParticleType
 public enum PoolType
 {
     None = 0,
-
     Bullet = 1,
     DashShadow = 2,
+    Brick = 3,
     HpText = 20,
 }

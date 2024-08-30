@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Player : Character
 {
@@ -11,10 +12,11 @@ public class Player : Character
     private readonly float rotationSpeed = 700f;
     private readonly float movementThreshold = 0.001f;
 
+    private List<Brick> collectedBricks = new();
+
     public override void OnInit()
     {
         base.OnInit();
-
         ChangeColor(color);
     }
 
@@ -39,5 +41,20 @@ public class Player : Character
         {
             ChangeAnim(Constants.ANIM_IDLE);
         }
+    }
+
+    protected override void AddBrick()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void RemoveBrick()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void ClearBricks()
+    {
+        throw new System.NotImplementedException();
     }
 }

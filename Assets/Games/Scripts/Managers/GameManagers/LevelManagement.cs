@@ -4,8 +4,8 @@ using UnityEngine;
 public class LevelManagement : Singleton<LevelManagement>
 {
     [Header("Level Settings")]
-    [SerializeField] Level[] levels;
-    [SerializeField] Player player;
+    [SerializeField] protected Level[] levels;
+    [SerializeField] protected Player player;
 
     private Level currentLevel;
     private int currentLevelIndex = 0;

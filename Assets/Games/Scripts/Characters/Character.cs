@@ -4,12 +4,12 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [Header("Character Settings")]
-    [SerializeField] protected float moveSpeed = 5f;
+    [SerializeField] protected float moveSpeed;
     [SerializeField] protected Animator anim;
 
     [Header("Skins")]
-    [SerializeField] ColorData colorData;
-    [SerializeField] Renderer meshRenderer;
+    [SerializeField] protected ColorData colorData;
+    [SerializeField] protected Renderer meshRenderer;
     public ColorType color;
 
     private string animName;
@@ -28,6 +28,12 @@ public abstract class Character : MonoBehaviour
     public virtual void OnInit() { }
 
     protected abstract void HandleMovement();
+
+    protected abstract void AddBrick();
+
+    protected abstract void RemoveBrick();
+
+    protected abstract void ClearBricks();
 
     protected float GetMoveSpeed()
     {

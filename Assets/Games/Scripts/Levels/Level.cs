@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] Transform startPoint;
+    [SerializeField] protected Transform startPoint;
     //[SerializeField] Transform finishPoint;
 
     public Vector3 GetStartPoint()
