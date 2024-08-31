@@ -8,18 +8,21 @@ public class Level : MonoBehaviour
 
     public Vector3 GetStartPoint()
     {
-        if (startPoint == null) return Vector3.zero;
-        return startPoint.position;
+        return startPoint != null ? startPoint.position : Vector3.zero;
     }
 
     public Vector3 GetFinishPoint()
     {
-        if (finishPoint == null) return Vector3.zero;
-        return finishPoint.position;
+        return finishPoint != null ? finishPoint.position : Vector3.zero;
     }
 
     public void OnInit()
     {
-        //Setup something here
+        if (floors == null || floors.Length == 0) return;
+
+        foreach (Stage floor in floors)
+        {
+            floor.OnInit();
+        }
     }
 }

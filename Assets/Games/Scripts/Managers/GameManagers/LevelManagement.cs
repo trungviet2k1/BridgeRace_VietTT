@@ -1,5 +1,4 @@
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelManagement : Singleton<LevelManagement>
 {
@@ -8,10 +7,11 @@ public class LevelManagement : Singleton<LevelManagement>
     [SerializeField] protected Player player;
 
     private Level currentLevel;
+    private int levelIndex = 0;
 
-    public void Start()
+    private void Start()
     {
-        OnLoadLevel(0);
+        OnLoadLevel(levelIndex);
         OnInit();
     }
 
@@ -34,7 +34,6 @@ public class LevelManagement : Singleton<LevelManagement>
         HBPool.CollectAll();
     }
 
-    //tao prefab level moi
     public void OnLoadLevel(int level)
     {
         if (currentLevel != null)
@@ -45,7 +44,28 @@ public class LevelManagement : Singleton<LevelManagement>
         GameObject map = GameObject.Find("Map");
         if (map == null) return;
 
-        currentLevel = Instantiate(levels[level], map.transform);
-        currentLevel.OnInit();
+        if (level < levels.Length)
+        {
+            currentLevel = Instantiate(levels[level], map.transform);
+            currentLevel.OnInit();
+        }
+        else
+        {
+            HandleNoMoreLevels();
+        }
+    }
+
+    public void LoadNextLevel()
+    {
+        levelIndex++;
+        OnReset();
+        OnLoadLevel(levelIndex);
+        OnInit();
+    }
+
+    private void HandleNoMoreLevels()
+    {
+        Debug.Log("No more levels to load. Implement the desired action here.");
+        Application.Quit();
     }
 }

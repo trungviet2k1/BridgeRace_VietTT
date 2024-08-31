@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 6538524013527312219}
+  doorCollider: {fileID: 1913237624134979775}
   colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
 --- !u!1 &3122889690767764216
 GameObject:
@@ -655,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 2181494570881908810}
+  doorCollider: {fileID: 2335044908324409840}
   colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
 --- !u!1 &9188518725448661080
 GameObject:

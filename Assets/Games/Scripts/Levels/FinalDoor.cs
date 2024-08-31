@@ -11,29 +11,28 @@ public class FinalDoor : MonoBehaviour
     {
         if (finalDoor == null) return;
         level = GetComponentInParent<Level>();
+        if (level == null) return;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.TryGetComponent(out Character player) && level != null && isBridgeComplete)
         {
-            Player player = other.GetComponent<Player>();
-            if (player != null && level != null && isBridgeComplete)
-            {
-                StartCoroutine(HandlePlayerArrival(player));
-            }
+            StartCoroutine(HandlePlayerArrival(player));
         }
     }
 
-    private IEnumerator HandlePlayerArrival(Player player)
+    private IEnumerator HandlePlayerArrival(Character player)
     {
         yield return new WaitForSeconds(1f);
+        Vector3 finishPoint = level.GetFinishPoint();
+        player.transform.position = finishPoint;
+        player.ChangeAnim(Constants.ANIM_DANCE);
+        player.transform.eulerAngles = Vector3.up * 180;
+        player.OnInit();
 
-        if (player != null && level != null)
-        {
-            Vector3 finishPoint = level.GetFinishPoint();
-            player.transform.position = finishPoint;
-        }
+        yield return new WaitForSeconds(5f);
+        LevelManagement.Ins.LoadNextLevel();
     }
 
     public void SetBridgeComplete()

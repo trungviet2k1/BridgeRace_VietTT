@@ -6,7 +6,7 @@ using System.Collections;
 public abstract class Character : MonoBehaviour
 {
     [Header("Character Settings")]
-    [SerializeField] protected float moveSpeed = 5f;
+    [SerializeField] protected float moveSpeed = 6f;
     [SerializeField] protected Animator animator;
 
     [Header("Skins")]
@@ -55,7 +55,10 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-    public virtual void OnInit() { }
+    public virtual void OnInit()
+    {
+        ClearBricks();
+    }
 
     protected abstract void HandleMovement();
 
@@ -109,7 +112,7 @@ public abstract class Character : MonoBehaviour
     {
         if (bricks.Count > 0)
         {
-            GameObject playerBrick = bricks[bricks.Count - 1];
+            GameObject playerBrick = bricks[^1];
             bricks.RemoveAt(bricks.Count - 1);
             Destroy(playerBrick);
         }

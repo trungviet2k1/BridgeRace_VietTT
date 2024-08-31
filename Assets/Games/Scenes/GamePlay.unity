@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 566205431}
   - component: {fileID: 566205432}
   m_Layer: 0
-  m_Name: PoolControler
+  m_Name: PoolController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,11 +422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e08bb81313078044b55d794db3d4346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 6
   animator: {fileID: 5866666020590425593}
   colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
   meshRenderer: {fileID: 8913218760490528223}
-  color: 4
+  color: 0
   brickHolder: {fileID: 287849013}
   brickPrefab: {fileID: 7330786042811534929, guid: ffe563cbe66ba1244b1d2e7d96a21740, type: 3}
   joystick: {fileID: 1635191300}
@@ -875,8 +875,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 5738390980046567186, guid: 8468a4c2ea72bad4f9bace20eb31b7e4, type: 3}
-  - {fileID: 5738390980046567186, guid: b8a9cafa5c817984fa99f4125104a697, type: 3}
-  - {fileID: 5738390980046567186, guid: 83421298258304941aeb105fd11920c0, type: 3}
+  - {fileID: 5738390980046567186, guid: 310d0974f8630784886cfade1992f00c, type: 3}
+  - {fileID: 5738390980046567186, guid: 111cd80bba67220419d02cef388bf075, type: 3}
   player: {fileID: 669810453}
 --- !u!1 &128786565803889735
 GameObject:

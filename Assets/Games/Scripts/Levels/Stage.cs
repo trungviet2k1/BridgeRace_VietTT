@@ -14,10 +14,30 @@ public class Stage : MonoBehaviour
 
     private void Start()
     {
+        OnInit();
+    }
+
+    public void OnInit()
+    {
         Player playerCharacter = FindPlayerCharacter();
         foreach (Stage floor in floors)
         {
+            ResetBricks(floor.transform);
             GenerateBricks(floor.transform, playerCharacter);
+        }
+    }
+
+    private void ResetBricks(Transform floor)
+    {
+        Transform brickPoint = floor.Find("BrickPoint");
+        if (brickPoint == null) return;
+
+        foreach (Transform child in brickPoint)
+        {
+            if (child.TryGetComponent<GameUnit>(out var brick))
+            {
+                HBPool.Despawn(brick);
+            }
         }
     }
 
@@ -43,7 +63,7 @@ public class Stage : MonoBehaviour
         {
             for (int j = 0; j < columns; j++)
             {
-                Vector3 brickPosition = new (j * columnSpacing, 0.1f, i * rowSpacing);
+                Vector3 brickPosition = new(j * columnSpacing, 0.1f, i * rowSpacing);
                 Vector3 finalPosition = startPosition + brickPosition;
                 Quaternion brickRotation = Quaternion.Euler(0, 90, 0);
                 Brick brick = HBPool.Spawn<Brick>(PoolType.Brick, finalPosition, brickRotation);
