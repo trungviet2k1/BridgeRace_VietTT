@@ -10,15 +10,14 @@ public class Stage : MonoBehaviour
     [SerializeField] protected int columns;
     [SerializeField] protected float rowSpacing;
     [SerializeField] protected float columnSpacing;
-    [SerializeField] protected Transform[] floors;
+    [SerializeField] protected Stage[] floors;
 
     private void Start()
     {
         Player playerCharacter = FindPlayerCharacter();
-
-        foreach (Transform floor in floors)
+        foreach (Stage floor in floors)
         {
-            GenerateBricks(floor, playerCharacter);
+            GenerateBricks(floor.transform, playerCharacter);
         }
     }
 
@@ -60,8 +59,6 @@ public class Stage : MonoBehaviour
                 {
                     brick.ChangeColor(ColorType.Red);
                 }
-
-                brick.ResetBrick();
             }
         }
     }

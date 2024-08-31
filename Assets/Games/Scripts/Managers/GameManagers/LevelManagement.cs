@@ -8,7 +8,6 @@ public class LevelManagement : Singleton<LevelManagement>
     [SerializeField] protected Player player;
 
     private Level currentLevel;
-    private int currentLevelIndex = 0;
 
     public void Start()
     {
@@ -16,7 +15,6 @@ public class LevelManagement : Singleton<LevelManagement>
         OnInit();
     }
 
-    //khoi tao trang thai bat dau game
     public void OnInit()
     {
         player.OnInit();
@@ -24,7 +22,6 @@ public class LevelManagement : Singleton<LevelManagement>
         player.transform.position = currentLevel.GetStartPoint();
     }
 
-    //reset trang thai khi ket thuc game
     public void OnReset()
     {
         //player.OnDespawn();
@@ -34,7 +31,7 @@ public class LevelManagement : Singleton<LevelManagement>
         //}
 
         //bots.Clear();
-        //SimplePool.CollectAll();
+        HBPool.CollectAll();
     }
 
     //tao prefab level moi
@@ -49,11 +46,6 @@ public class LevelManagement : Singleton<LevelManagement>
         if (map == null) return;
 
         currentLevel = Instantiate(levels[level], map.transform);
-    }
-
-    public void LoadNextLevel()
-    {
-        currentLevelIndex = (currentLevelIndex + 1) % levels.Length;
-        OnLoadLevel(currentLevelIndex);
+        currentLevel.OnInit();
     }
 }

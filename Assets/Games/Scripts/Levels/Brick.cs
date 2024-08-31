@@ -1,12 +1,13 @@
 ﻿using Scriptable;
+using System.Collections;
 using UnityEngine;
 
 public class Brick : GameUnit
 {
     [Header("Brick Color Settings")]
     public ColorType colorType;
-    [SerializeField] protected ColorData colorData;
-    [SerializeField] protected Renderer meshRenderer;
+    [SerializeField] private ColorData colorData;
+    [SerializeField] private Renderer meshRenderer;
 
     public void ChangeColor(ColorType colorType)
     {
@@ -14,13 +15,18 @@ public class Brick : GameUnit
         meshRenderer.material = colorData.GetMat(colorType);
     }
 
-    public void ResetBrick()
+    public ColorType ColorType()
+    {
+        return colorType;
+    }
+
+    public void BrickSpawn()
     {
         gameObject.SetActive(true);
     }
 
-    public void ReturnToPool()
+    public void BrickDespawn()
     {
-        HBPool.Despawn(this);
+        OnDespawn(0f);
     }
 }

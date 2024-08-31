@@ -285,6 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5638817981437641251}
+  - component: {fileID: 3906987653701508746}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Untagged
@@ -310,6 +311,43 @@ Transform:
   - {fileID: 4640458309586804542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3906987653701508746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493635318976410370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb198662a7f76d843bde56ae21c9e0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stairs:
+  - {fileID: 9208840770054257658}
+  - {fileID: 4126620386565660982}
+  - {fileID: 2929677287679324380}
+  - {fileID: 559292657768743818}
+  - {fileID: 1747547737275809868}
+  - {fileID: 7974229750950761497}
+  - {fileID: 2302966750291255036}
+  - {fileID: 8803077930029256028}
+  - {fileID: 3015754973263601586}
+  - {fileID: 2871783151934676645}
+  - {fileID: 5145769142192447093}
+  - {fileID: 467916289504736094}
+  - {fileID: 6755497561868722342}
+  - {fileID: 8207164785215161570}
+  - {fileID: 5884343768254833880}
+  - {fileID: 6531772632982835096}
+  - {fileID: 4719987810160000715}
+  - {fileID: 1986923562637327606}
+  - {fileID: 3505499113975424774}
+  - {fileID: 651078445108166686}
+  - {fileID: 8958101031768275350}
+  secondDoors:
+  - {fileID: 8655149070123776365}
+  - {fileID: 5233695333895491325}
 --- !u!1 &8045484013565976555
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +408,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -418,11 +460,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &2871783151934676645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 347009082029857601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3902260932557632361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -490,6 +547,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2040498148795844580, guid: 66c80c3768c2d1b48b8bac768931374f, type: 3}
   m_PrefabInstance: {fileID: 388203129512142417}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5233695333895491325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5603320839957244076, guid: 66c80c3768c2d1b48b8bac768931374f, type: 3}
+  m_PrefabInstance: {fileID: 388203129512142417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20c7137ad1468345b3deec58a1daf37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8655149070123776365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9042780036901609276, guid: 66c80c3768c2d1b48b8bac768931374f, type: 3}
+  m_PrefabInstance: {fileID: 388203129512142417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20c7137ad1468345b3deec58a1daf37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &779211039421192790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -498,6 +577,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -546,11 +629,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &3015754973263601586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 779211039421192790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4046236877559263870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -564,6 +662,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -612,11 +714,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &2929677287679324380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 838233154041558328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4131296003059358992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -630,6 +747,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -678,6 +799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -688,6 +813,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 1417584653649208034}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3505499113975424774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 1417584653649208034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1895731790180279506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -696,6 +832,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -744,6 +884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -754,6 +898,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 1895731790180279506}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4126620386565660982 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 1895731790180279506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2650734316769216110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -762,6 +917,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -810,11 +969,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &559292657768743818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 2650734316769216110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1602722496362425926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -828,6 +1002,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -876,11 +1054,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &467916289504736094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 2698801895890335418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1694300456399117970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -894,6 +1087,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -942,11 +1139,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &651078445108166686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 3027356838089442810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1798091075205328338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -960,6 +1172,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1008,6 +1224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1018,6 +1238,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 4078208575756056850}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1986923562637327606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 4078208575756056850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4272442752926549416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1026,6 +1257,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1074,6 +1309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1084,6 +1323,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 4272442752926549416}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1747547737275809868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 4272442752926549416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4395378454193281816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1092,6 +1342,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1140,6 +1394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1150,6 +1408,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 4395378454193281816}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2302966750291255036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 4395378454193281816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5593588186597577213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1158,6 +1427,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1206,11 +1479,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &7974229750950761497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 5593588186597577213}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9175844128946813397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -1224,6 +1512,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1272,6 +1564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1282,6 +1578,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 5976269592465867014}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8207164785215161570 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 5976269592465867014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6422306623062296760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1290,6 +1597,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1338,6 +1649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1348,6 +1663,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 6422306623062296760}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8803077930029256028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 6422306623062296760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6685051070374886942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1356,9 +1682,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
-    - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1404,6 +1730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1414,6 +1744,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 6685051070374886942}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9208840770054257658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 6685051070374886942}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6871327589771148402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1422,6 +1763,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1470,6 +1815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1480,6 +1829,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 6871327589771148402}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8958101031768275350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 6871327589771148402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7100644459016059695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1488,6 +1848,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1536,11 +1900,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &4719987810160000715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 7100644459016059695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5800004981104661255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -1554,6 +1933,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1602,11 +1985,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+--- !u!114 &5145769142192447093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 7233692089340517265}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6238738851640374201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
@@ -1682,6 +2080,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1730,6 +2132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1740,6 +2146,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 8260496853617942844}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5884343768254833880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 8260496853617942844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8768449092435217020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1748,6 +2165,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1796,6 +2217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1806,6 +2231,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 8768449092435217020}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6531772632982835096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 8768449092435217020}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9136137170167145794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1814,6 +2250,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4418536282029162397}
     m_Modifications:
+    - target: {fileID: 803258271494291197, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 941142761024808635, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1862,6 +2302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5617950716543725834, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1872,3 +2316,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672491223169509416, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
   m_PrefabInstance: {fileID: 9136137170167145794}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6755497561868722342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2524915634584536548, guid: 2e1493f6e71c9014290f5046cbb8301c, type: 3}
+  m_PrefabInstance: {fileID: 9136137170167145794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

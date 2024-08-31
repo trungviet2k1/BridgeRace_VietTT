@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3967007480307394179}
   - component: {fileID: 941142761024808635}
   - component: {fileID: 803258271494291197}
-  m_Layer: 0
+  - component: {fileID: 2524915634584536548}
+  m_Layer: 7
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5617950716543725834}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -105,3 +106,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2524915634584536548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5617950716543725834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 941142761024808635}
+  colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
+  activationHeight: 0.5
+  characterLayerMask:
+    serializedVersion: 2
+    m_Bits: 1536
