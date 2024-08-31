@@ -17,8 +17,8 @@ public abstract class Character : MonoBehaviour
     [Header("Bricks")]
     [SerializeField] protected Transform brickHolder;
     [SerializeField] protected GameObject brickPrefab;
-    protected List<GameObject> bricks = new();
 
+    protected List<GameObject> bricks = new();
     protected Stage currentState;
 
     private string animName;

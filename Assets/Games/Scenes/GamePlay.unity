@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 669810454}
   - component: {fileID: 669810455}
   - component: {fileID: 669810453}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ MonoBehaviour:
   animator: {fileID: 5866666020590425593}
   colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
   meshRenderer: {fileID: 8913218760490528223}
-  color: 0
+  color: 2
   brickHolder: {fileID: 287849013}
   brickPrefab: {fileID: 7330786042811534929, guid: ffe563cbe66ba1244b1d2e7d96a21740, type: 3}
   joystick: {fileID: 1635191300}

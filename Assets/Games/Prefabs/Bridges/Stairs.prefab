@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 941142761024808635}
   - component: {fileID: 803258271494291197}
   - component: {fileID: 2524915634584536548}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,9 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d30057021b00774ca8b87f576891c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stairColor: 0
   meshRenderer: {fileID: 941142761024808635}
   colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
-  activationHeight: 0.5
   characterLayerMask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 192
+  isActive: 0

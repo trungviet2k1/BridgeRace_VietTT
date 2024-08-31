@@ -5,18 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - Brick
+  - Floor
+  - Stage
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - Ground
-  - Stair
-  - Stage
   - Player
   - Bot
+  - Stair
+  - 
+  - 
   - 
   - 
   - 

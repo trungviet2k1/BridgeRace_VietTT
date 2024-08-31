@@ -34,7 +34,7 @@ public class Stage : MonoBehaviour
 
         foreach (Transform child in brickPoint)
         {
-            if (child.TryGetComponent<GameUnit>(out var brick))
+            if (child.TryGetComponent<Brick>(out var brick))
             {
                 HBPool.Despawn(brick);
             }
