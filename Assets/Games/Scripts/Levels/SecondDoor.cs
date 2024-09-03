@@ -27,7 +27,7 @@ public class SecondDoor : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         meshRenderer.enabled = false;
         doorCollider.enabled = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         doorCollider.enabled = true;
     }
 }

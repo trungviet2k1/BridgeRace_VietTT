@@ -1,15 +1,15 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FirstDoor : MonoBehaviour
 {
     [SerializeField] protected BoxCollider firstDoor;
-    private Character playerCharacter;
+    private readonly List<Character> characters = new();
 
     private void Start()
     {
-        if (playerCharacter == null && firstDoor == null) return;
-        playerCharacter = FindPlayerCharacter();
-        UpdateDoorState();
+        characters.AddRange(FindAllCharacters());
+        if (characters.Count == 0 || firstDoor == null) return;
     }
 
     private void Update()
@@ -19,19 +19,19 @@ public class FirstDoor : MonoBehaviour
 
     private void UpdateDoorState()
     {
-        if (playerCharacter != null && playerCharacter.GetBrickCount() > 0)
+        foreach (var character in characters)
         {
-            firstDoor.isTrigger = true;
+            int brickCount = character.GetBrickCount();
+            if (brickCount > 0)
+            {
+                firstDoor.isTrigger = true;
+                return;
+            }
         }
     }
 
-    private Character FindPlayerCharacter()
+    private Character[] FindAllCharacters()
     {
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag(Constants.CHARACTER);
-        if (playerObjects.Length > 0)
-        {
-            return playerObjects[0].GetComponent<Character>();
-        }
-        return null;
+        return GameObject.FindObjectsOfType<Character>();
     }
 }

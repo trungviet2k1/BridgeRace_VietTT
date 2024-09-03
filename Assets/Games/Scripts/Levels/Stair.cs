@@ -15,8 +15,16 @@ public class Stair : MonoBehaviour
     private void Start()
     {
         if (meshRenderer == null) return;
-
         SetStairActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Character character = other.GetComponent<Character>();
+        if (character != null && ((1 << other.gameObject.layer) & characterLayerMask) != 0)
+        {
+            ActivateStair(character);
+        }
     }
 
     public void ActivateStair(Character character)

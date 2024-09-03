@@ -45,7 +45,7 @@ public class Stage : MonoBehaviour
         GenerateBricks(floor.transform, playerCharacter, bots.ToArray());
     }
 
-    private void ResetBricks(Transform floor)
+    public void ResetBricks(Transform floor)
     {
         Transform brickPoint = floor.Find("BrickPoint");
         if (brickPoint == null) return;
@@ -59,7 +59,7 @@ public class Stage : MonoBehaviour
         }
     }
 
-    private void GenerateBricks(Transform floor, Player playerCharacter, Bot[] bots)
+    public void GenerateBricks(Transform floor, Player playerCharacter, Bot[] bots)
     {
         Transform brickPoint = floor.Find("BrickPoint");
         if (brickPoint == null) return;

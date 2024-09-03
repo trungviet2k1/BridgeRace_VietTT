@@ -55,10 +55,7 @@ public abstract class Character : GameUnit
         }
     }
 
-    public virtual void OnInit()
-    {
-        ClearBricks();
-    }
+    public virtual void OnInit() { }
 
     protected abstract void HandleMovement();
 
@@ -120,9 +117,9 @@ public abstract class Character : GameUnit
 
     public void ClearBricks()
     {
-        foreach (GameObject brick in bricks)
+        foreach (Transform brick in brickHolder)
         {
-            Destroy(brick);
+            Destroy(brick.gameObject);
         }
         bricks.Clear();
     }

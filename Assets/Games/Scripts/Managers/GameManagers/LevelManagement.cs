@@ -4,7 +4,7 @@ public class LevelManagement : Singleton<LevelManagement>
 {
     [Header("Level Settings")]
     [SerializeField] protected Level[] levels;
-    [SerializeField] protected Player player;
+    [SerializeField] protected Character characters;
 
     [HideInInspector] public Level currentLevel;
     private int levelIndex = 0;
@@ -17,20 +17,17 @@ public class LevelManagement : Singleton<LevelManagement>
 
     public void OnInit()
     {
-        player.OnInit();
+        characters.OnInit();
         if (currentLevel == null) return;
-        player.transform.position = currentLevel.GetStartPoint();
+        characters.transform.position = currentLevel.GetStartPoint();
+        characters.ChangeAnim(Constants.ANIM_IDLE);
     }
 
     public void OnReset()
     {
-        //player.OnDespawn();
-        //for (int i = 0; i < bots.Count; i++)
-        //{
-        //    bots[i].OnDespawn();
-        //}
-
-        //bots.Clear();
+        if (currentLevel == null) return;
+        currentLevel.ResetLevel();
+        characters.ClearBricks();
         HBPool.CollectAll();
     }
 
@@ -57,6 +54,8 @@ public class LevelManagement : Singleton<LevelManagement>
 
     public void LoadNextLevel()
     {
+        characters.ClearBricks();
+
         levelIndex++;
         OnReset();
         OnLoadLevel(levelIndex);

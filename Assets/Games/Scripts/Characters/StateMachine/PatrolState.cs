@@ -1,22 +1,35 @@
-﻿public class PatrolState : IState<Bot>
+﻿using UnityEngine;
+
+public class PatrolState : IState<Bot>
 {
-    public void OnEnter(Bot bots)
+    private int targetBrick;
+
+    public void OnEnter(Bot bot)
     {
-        bots.SeekBrick();
+        targetBrick = Random.Range(3, 8);
+        bot.SeekBrick();
     }
 
-    public void OnExecute(Bot bots)
+    public void OnExecute(Bot bot)
     {
-        bots.ChangeAnim(Constants.ANIM_RUN);
-        if (bots.GetBrickCount() >= 10)
+        bot.ChangeAnim(Constants.ANIM_RUN);
+
+        if (bot.GetBrickCount() >= targetBrick)
         {
-            bots.ChangeState(new BuildState());
+            bot.ChangeState(new BuildState());
         }
         else
         {
-            bots.MoveToNextBrick();
+            if (bot.brickPositions.Count > 0)
+            {
+                bot.MoveToBrickPosition();
+            }
+            else
+            {
+                bot.SeekBrick();
+            }
         }
     }
 
-    public void OnExit(Bot bots) { }
+    public void OnExit(Bot bot) { }
 }

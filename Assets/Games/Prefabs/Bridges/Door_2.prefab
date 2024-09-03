@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 6538524013527312219}
   - component: {fileID: 1913237624134979775}
   - component: {fileID: 9042780036901609276}
+  - component: {fileID: 1441655973864125097}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -226,6 +227,25 @@ MonoBehaviour:
   meshRenderer: {fileID: 6538524013527312219}
   doorCollider: {fileID: 1913237624134979775}
   colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
+--- !u!114 &1441655973864125097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402555618356247568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &3122889690767764216
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 896278857372253997}
+  - component: {fileID: 2830568316748738357}
   m_Layer: 0
   m_Name: Col_2
   m_TagString: Untagged
@@ -399,6 +420,25 @@ Transform:
   - {fileID: 3971428776752444519}
   m_Father: {fileID: 2040498148795844580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2830568316748738357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4293032570192939585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4798280017547390094
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4354781560963454653}
+  - component: {fileID: 7170591596783329528}
   m_Layer: 0
   m_Name: Col_1
   m_TagString: Untagged
@@ -537,6 +578,25 @@ Transform:
   - {fileID: 1340859879502672638}
   m_Father: {fileID: 2040498148795844580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7170591596783329528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6879543171603728735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &8492743228757205344
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +610,7 @@ GameObject:
   - component: {fileID: 2181494570881908810}
   - component: {fileID: 2335044908324409840}
   - component: {fileID: 5603320839957244076}
+  - component: {fileID: 8263273277430237086}
   m_Layer: 0
   m_Name: Door (1)
   m_TagString: Untagged
@@ -658,6 +719,25 @@ MonoBehaviour:
   meshRenderer: {fileID: 2181494570881908810}
   doorCollider: {fileID: 2335044908324409840}
   colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
+--- !u!114 &8263273277430237086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492743228757205344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &9188518725448661080
 GameObject:
   m_ObjectHideFlags: 0

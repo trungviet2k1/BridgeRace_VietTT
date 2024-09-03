@@ -41,12 +41,23 @@ public class Level : MonoBehaviour
         }
     }
 
+    public void ResetLevel()
+    {
+        foreach (Stage floor in floors)
+        {
+            floor.ResetBricks(floor.transform);
+            floor.GenerateBricks(floor.transform, FindObjectOfType<Player>(), FindObjectsOfType<Bot>());
+        }
+
+        SpawnPlayerAndBots();
+    }
+
     private void SpawnPlayerAndBots()
     {
         Player player = FindObjectOfType<Player>();
         if (player == null) return;
 
-        GameObject botContainer = GameObject.Find("Bot");
+        Transform botContainer = GameObject.Find("Bot").transform;
         if (botContainer == null) return;
 
         if (startPoints.Length < 4) return;
@@ -62,9 +73,11 @@ public class Level : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             Transform botStartPoint = GetRandomStartPoint(availableStartPoints);
-            GameObject bot = Instantiate(botPrefab, botStartPoint.position, Quaternion.identity, botContainer.transform);
-            Bot botCharacter = bot.GetComponent<Bot>();
+            //GameObject bot = Instantiate(botPrefab, botStartPoint.position, Quaternion.identity, botContainer.transform);
+            Bot bot = HBPool.Spawn<Bot>(PoolType.Bot, botStartPoint.position, Quaternion.identity);
+            bot.transform.SetParent(botContainer);
 
+            Bot botCharacter = bot.GetComponent<Bot>();
             ColorType botColor;
             do
             {

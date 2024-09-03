@@ -1,17 +1,20 @@
-﻿public class BuildState : IState<Bot>
+﻿using UnityEngine;
+
+public class BuildState : IState<Bot>
 {
-    public void OnEnter(Bot bots)
+    public void OnEnter(Bot bot)
     {
-        //bot.ChangeAnim(Constants.ANIM_RUN);
+        bot.MoveToFinishPoint();
     }
 
-    public void OnExecute(Bot bots)
+    public void OnExecute(Bot bot)
     {
-        if (bots.GetBrickCount() == 0)
+        if (bot.navMeshAgent.pathPending || bot.navMeshAgent.remainingDistance > bot.navMeshAgent.stoppingDistance) return;
+        if (bot.GetBrickCount() == 0)
         {
-            bots.ChangeState(new PatrolState());
+            bot.ChangeState(new PatrolState());
         }
     }
 
-    public void OnExit(Bot bots) { }
+    public void OnExit(Bot bot) { }
 }

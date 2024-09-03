@@ -860,7 +860,7 @@ MonoBehaviour:
   - {fileID: 5738390980046567186, guid: 8468a4c2ea72bad4f9bace20eb31b7e4, type: 3}
   - {fileID: 5738390980046567186, guid: faab38b21bff7024dbeda5e848c3e7b6, type: 3}
   - {fileID: 5738390980046567186, guid: 1406c2e43159e25469f5657253cd4c8a, type: 3}
-  player: {fileID: 669810453}
+  characters: {fileID: 669810453}
   currentLevel: {fileID: 0}
 --- !u!4 &543450652250492803 stripped
 Transform:

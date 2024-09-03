@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 public class Bot : Character
 {
@@ -49,14 +49,21 @@ public class Bot : Character
         }
     }
 
-    public void MoveToNextBrick()
+    public void MoveToBrickPosition()
     {
         HandleMovement();
+    }
+
+    public void MoveToFinishPoint()
+    {
+        Vector3 finishPoint = LevelManagement.Ins.currentLevel.GetFinishPoint();
+        navMeshAgent.SetDestination(finishPoint);
     }
 
     protected override void HandleMovement()
     {
         if (brickPositions.Count == 0) return;
+
         if (navMeshAgent.pathPending || navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance) return;
 
         int randomIndex = Random.Range(0, brickPositions.Count);
