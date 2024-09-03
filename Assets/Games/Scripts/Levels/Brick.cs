@@ -1,5 +1,4 @@
 ﻿using Scriptable;
-using System.Collections;
 using UnityEngine;
 
 public class Brick : GameUnit

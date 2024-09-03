@@ -6,7 +6,7 @@ public class LevelManagement : Singleton<LevelManagement>
     [SerializeField] protected Level[] levels;
     [SerializeField] protected Player player;
 
-    private Level currentLevel;
+    [HideInInspector] public Level currentLevel;
     private int levelIndex = 0;
 
     private void Start()
@@ -41,7 +41,7 @@ public class LevelManagement : Singleton<LevelManagement>
             Destroy(currentLevel.gameObject);
         }
 
-        GameObject map = GameObject.Find("Map");
+        GameObject map = GameObject.Find("======Map======");
         if (map == null) return;
 
         if (level < levels.Length)
@@ -51,7 +51,7 @@ public class LevelManagement : Singleton<LevelManagement>
         }
         else
         {
-            HandleNoMoreLevels();
+            NoMoreLevels();
         }
     }
 
@@ -63,7 +63,7 @@ public class LevelManagement : Singleton<LevelManagement>
         OnInit();
     }
 
-    private void HandleNoMoreLevels()
+    private void NoMoreLevels()
     {
         Debug.Log("No more levels to load. Implement the desired action here.");
         Application.Quit();

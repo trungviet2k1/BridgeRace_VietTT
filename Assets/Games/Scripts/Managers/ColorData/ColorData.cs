@@ -10,6 +10,10 @@ namespace Scriptable
         Green = 3,
         Orange = 4,
         Gray = 5,
+        Yellow = 6,
+        Pink = 7,
+        Purple = 8,
+        Turquoise = 9,
     }
 
     [CreateAssetMenu(menuName = "ColorData")]

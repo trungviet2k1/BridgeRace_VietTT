@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-public abstract class Character : MonoBehaviour
+public abstract class Character : GameUnit
 {
     [Header("Character Settings")]
     [SerializeField] protected float moveSpeed = 6f;
@@ -18,8 +18,8 @@ public abstract class Character : MonoBehaviour
     [SerializeField] protected Transform brickHolder;
     [SerializeField] protected GameObject brickPrefab;
 
+    [HideInInspector] public Stage stage;
     protected List<GameObject> bricks = new();
-    protected Stage currentState;
 
     private string animName;
     private LayerMask validLayerMask;
@@ -145,11 +145,6 @@ public abstract class Character : MonoBehaviour
             }
         }
         return canMove;
-    }
-
-    public void ChangeState(Stage stage)
-    {
-        currentState = stage;
     }
 
     private bool IsOnValidSurface()

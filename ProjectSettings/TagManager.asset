@@ -7,6 +7,7 @@ TagManager:
   - Brick
   - Floor
   - Stage
+  - Character
   layers:
   - Default
   - TransparentFX

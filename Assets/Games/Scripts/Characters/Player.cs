@@ -4,6 +4,8 @@ public class Player : Character
 {
     [Header("Joystick Settings")]
     [SerializeField] protected Joystick joystick;
+    [SerializeField] protected RectTransform rectTransform;
+    [SerializeField] protected CanvasGroup canvasGroup;
 
     [Header("Rigidbody")]
     [SerializeField] protected Rigidbody rb;
@@ -14,36 +16,55 @@ public class Player : Character
     public override void OnInit()
     {
         base.OnInit();
+        if (joystick == null && canvasGroup == null) return;
+        canvasGroup.alpha = 0f;
     }
 
     protected override void HandleMovement()
     {
-        if (joystick == null || rb == null) return;
+        if (Input.GetMouseButtonDown(0))
+        {
+            JoystickPosition(Input.mousePosition);
+        }
+        HandleJoystickMovement();
+    }
 
+    private void HandleJoystickMovement()
+    {
+        if (joystick == null || rb == null) return;
         float moveInputX = joystick.Horizontal;
         float moveInputZ = joystick.Vertical;
 
         Vector3 movement = GetMoveSpeed() * Time.deltaTime * new Vector3(moveInputX, 0, moveInputZ).normalized;
         Vector3 nextPosition = rb.position + movement;
+        bool isMoving = Mathf.Abs(movement.magnitude) > movementThreshold;
 
         if (CanMove(nextPosition))
         {
             rb.MovePosition(nextPosition);
-
-            if (movement.magnitude > movementThreshold)
+            if (isMoving)
             {
+                ChangeAnim(Constants.ANIM_RUN);
                 Quaternion targetRotation = Quaternion.LookRotation(movement.normalized, Vector3.up);
                 rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.deltaTime));
-                ChangeAnim(Constants.ANIM_RUN);
-            }
-            else
-            {
-                ChangeAnim(Constants.ANIM_IDLE);
             }
         }
-        else
+
+        if (!isMoving || !CanMove(nextPosition))
         {
-            ChangeAnim(Constants.ANIM_IDLE);
+            StopMovement();
         }
+    }
+
+    private void JoystickPosition(Vector2 position)
+    {
+        rectTransform.position = position;
+    }
+
+    private void StopMovement()
+    {
+        ChangeAnim(Constants.ANIM_IDLE);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }

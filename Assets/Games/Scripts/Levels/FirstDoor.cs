@@ -27,7 +27,7 @@ public class FirstDoor : MonoBehaviour
 
     private Character FindPlayerCharacter()
     {
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag(Constants.CHARACTER);
         if (playerObjects.Length > 0)
         {
             return playerObjects[0].GetComponent<Character>();

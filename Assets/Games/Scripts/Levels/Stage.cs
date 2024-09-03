@@ -10,7 +10,9 @@ public class Stage : MonoBehaviour
     [SerializeField] protected int columns;
     [SerializeField] protected float rowSpacing;
     [SerializeField] protected float columnSpacing;
-    [SerializeField] protected Stage[] floors;
+
+    [Header("Floor")]
+    [SerializeField] protected Stage floor;
 
     private void Start()
     {
@@ -19,12 +21,28 @@ public class Stage : MonoBehaviour
 
     public void OnInit()
     {
-        Player playerCharacter = FindPlayerCharacter();
-        foreach (Stage floor in floors)
+        Character[] characters = FindCharacters();
+        if (characters == null || characters.Length == 0) return;
+
+        Player playerCharacter = null;
+        List<Bot> bots = new();
+
+        foreach (Character character in characters)
         {
-            ResetBricks(floor.transform);
-            GenerateBricks(floor.transform, playerCharacter);
+            if (character is Player player)
+            {
+                playerCharacter = player;
+            }
+            else if (character is Bot bot)
+            {
+                bots.Add(bot);
+            }
         }
+
+        if (playerCharacter == null || bots.Count < 3) return;
+
+        ResetBricks(floor.transform);
+        GenerateBricks(floor.transform, playerCharacter, bots.ToArray());
     }
 
     private void ResetBricks(Transform floor)
@@ -41,7 +59,7 @@ public class Stage : MonoBehaviour
         }
     }
 
-    private void GenerateBricks(Transform floor, Player playerCharacter)
+    private void GenerateBricks(Transform floor, Player playerCharacter, Bot[] bots)
     {
         Transform brickPoint = floor.Find("BrickPoint");
         if (brickPoint == null) return;
@@ -58,6 +76,12 @@ public class Stage : MonoBehaviour
         Shuffle(positions);
 
         HashSet<int> playerBrickPositions = new(positions.GetRange(0, 10));
+        HashSet<int>[] botBrickPositions = new HashSet<int>[bots.Length];
+
+        for (int i = 0; i < bots.Length; i++)
+        {
+            botBrickPositions[i] = new HashSet<int>(positions.GetRange(10 + i * 10, 10));
+        }
 
         for (int i = 0; i < rows; i++)
         {
@@ -77,20 +101,49 @@ public class Stage : MonoBehaviour
                 }
                 else
                 {
-                    brick.ChangeColor(ColorType.Red);
+                    for (int k = 0; k < bots.Length; k++)
+                    {
+                        if (botBrickPositions[k].Contains(currentPosition))
+                        {
+                            brick.ChangeColor(bots[k].color);
+                            break;
+                        }
+                    }
                 }
             }
         }
     }
 
-    private Player FindPlayerCharacter()
+    public List<Brick> FindBricksWithColor(ColorType colorType)
     {
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
-        if (playerObjects.Length > 0)
+        List<Brick> bricksWithColor = new();
+
+        Transform brickPoint = transform.Find("BrickPoint");
+        if (brickPoint == null) return bricksWithColor;
+
+        foreach (Transform child in brickPoint)
         {
-            return playerObjects[0].GetComponent<Player>();
+            if (child.TryGetComponent<Brick>(out Brick brick))
+            {
+                if (brick.ColorType() == colorType)
+                {
+                    bricksWithColor.Add(brick);
+                }
+            }
         }
-        return null;
+
+        return bricksWithColor;
+    }
+
+    private Character[] FindCharacters()
+    {
+        GameObject[] characterObjects = GameObject.FindGameObjectsWithTag(Constants.CHARACTER);
+        Character[] characters = new Character[characterObjects.Length];
+        for (int i = 0; i < characterObjects.Length; i++)
+        {
+            characters[i] = characterObjects[i].GetComponent<Character>();
+        }
+        return characters;
     }
 
     private void Shuffle<T>(List<T> list)
