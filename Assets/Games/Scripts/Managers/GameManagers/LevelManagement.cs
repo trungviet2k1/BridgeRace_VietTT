@@ -19,7 +19,7 @@ public class LevelManagement : Singleton<LevelManagement>
     {
         characters.OnInit();
         if (currentLevel == null) return;
-        characters.transform.position = currentLevel.GetStartPoint();
+        characters.TF.position = currentLevel.GetStartPoint();
         characters.ChangeAnim(Constants.ANIM_IDLE);
     }
 
@@ -27,7 +27,7 @@ public class LevelManagement : Singleton<LevelManagement>
     {
         if (currentLevel == null) return;
         currentLevel.ResetLevel();
-        characters.ClearBricks();
+        characters.OnDespawn();
         HBPool.CollectAll();
     }
 
@@ -44,7 +44,6 @@ public class LevelManagement : Singleton<LevelManagement>
         if (level < levels.Length)
         {
             currentLevel = Instantiate(levels[level], map.transform);
-            currentLevel.OnInit();
         }
         else
         {

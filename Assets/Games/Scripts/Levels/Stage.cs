@@ -11,12 +11,12 @@ public class Stage : MonoBehaviour
     [SerializeField] protected float rowSpacing;
     [SerializeField] protected float columnSpacing;
 
-    [Header("Floor")]
-    [SerializeField] protected Stage floor;
+    private bool bricksGenerated = false;
 
     private void Start()
     {
         OnInit();
+        ResetBricks(gameObject.transform);
     }
 
     public void OnInit()
@@ -39,10 +39,14 @@ public class Stage : MonoBehaviour
             }
         }
 
-        if (playerCharacter == null || bots.Count < 3) return;
+        if (playerCharacter == null || bots.Count < 1) return;
 
-        ResetBricks(floor.transform);
-        GenerateBricks(floor.transform, playerCharacter, bots.ToArray());
+        if (bricksGenerated)
+        {
+            ResetBricks(gameObject.transform);
+            GenerateBricks(gameObject.transform, playerCharacter, bots.ToArray());
+        }
+
     }
 
     public void ResetBricks(Transform floor)
@@ -50,17 +54,27 @@ public class Stage : MonoBehaviour
         Transform brickPoint = floor.Find("BrickPoint");
         if (brickPoint == null) return;
 
+        List<Brick> bricks = new();
         foreach (Transform child in brickPoint)
         {
             if (child.TryGetComponent<Brick>(out var brick))
             {
-                HBPool.Despawn(brick);
+                bricks.Add(brick);
             }
         }
+
+        foreach (var brick in bricks)
+        {
+            HBPool.Despawn(brick);
+        }
+
+        bricksGenerated = false;
     }
 
     public void GenerateBricks(Transform floor, Player playerCharacter, Bot[] bots)
     {
+        if (bricksGenerated) return;
+
         Transform brickPoint = floor.Find("BrickPoint");
         if (brickPoint == null) return;
 
@@ -75,12 +89,17 @@ public class Stage : MonoBehaviour
 
         Shuffle(positions);
 
-        HashSet<int> playerBrickPositions = new(positions.GetRange(0, 10));
+        int totalCharacters = bots.Length + 1;
+        int bricksPerCharacter = Mathf.Max(1, (rows * columns) / totalCharacters);
+
+        HashSet<int> playerBrickPositions = new(positions.GetRange(0, bricksPerCharacter));
         HashSet<int>[] botBrickPositions = new HashSet<int>[bots.Length];
 
         for (int i = 0; i < bots.Length; i++)
         {
-            botBrickPositions[i] = new HashSet<int>(positions.GetRange(10 + i * 10, 10));
+            int startIdx = bricksPerCharacter + i * bricksPerCharacter;
+            int endIdx = Mathf.Min(startIdx + bricksPerCharacter, positions.Count);
+            botBrickPositions[i] = new HashSet<int>(positions.GetRange(startIdx, endIdx - startIdx));
         }
 
         for (int i = 0; i < rows; i++)
@@ -91,7 +110,8 @@ public class Stage : MonoBehaviour
                 Vector3 finalPosition = startPosition + brickPosition;
                 Quaternion brickRotation = Quaternion.Euler(0, 90, 0);
                 Brick brick = HBPool.Spawn<Brick>(PoolType.Brick, finalPosition, brickRotation);
-                brick.transform.SetParent(brickPoint);
+                if (brick == null) continue;
+                brick.TF.SetParent(brickPoint);
 
                 int currentPosition = i * columns + j;
 
@@ -112,6 +132,8 @@ public class Stage : MonoBehaviour
                 }
             }
         }
+
+        bricksGenerated = true;
     }
 
     public List<Brick> FindBricksWithColor(ColorType colorType)
@@ -135,7 +157,7 @@ public class Stage : MonoBehaviour
         return bricksWithColor;
     }
 
-    private Character[] FindCharacters()
+    public Character[] FindCharacters()
     {
         GameObject[] characterObjects = GameObject.FindGameObjectsWithTag(Constants.CHARACTER);
         Character[] characters = new Character[characterObjects.Length];

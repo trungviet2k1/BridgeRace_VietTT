@@ -341,8 +341,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
-  m_Height: 2.3
+  m_Radius: 0.4
+  m_Height: 2.35
   m_Direction: 1
   m_Center: {x: 0, y: 1.15, z: 0}
 --- !u!54 &1360952133772293195
@@ -369,9 +369,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &3545396180686695761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,10 +389,13 @@ MonoBehaviour:
   animator: {fileID: 3017893076491160590}
   colorData: {fileID: 11400000, guid: 531d2e5e9a0b8e54094e82731cbaca78, type: 2}
   meshRenderer: {fileID: 5723425156111282968}
-  color: 2
+  color: 1
   brickHolder: {fileID: 3084017112297587595}
   brickPrefab: {fileID: 7330786042811534929, guid: ffe563cbe66ba1244b1d2e7d96a21740, type: 3}
   stage: {fileID: 0}
+  validLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   joystick: {fileID: 0}
   rectTransform: {fileID: 0}
   canvasGroup: {fileID: 0}

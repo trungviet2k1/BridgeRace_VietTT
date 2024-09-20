@@ -21,6 +21,7 @@ public class Brick : GameUnit
 
     public void BrickSpawn()
     {
+        if (gameObject == null) return;
         gameObject.SetActive(true);
     }
 

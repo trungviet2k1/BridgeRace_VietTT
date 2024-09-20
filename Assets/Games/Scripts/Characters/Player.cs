@@ -18,6 +18,13 @@ public class Player : Character
         base.OnInit();
         if (joystick == null && canvasGroup == null) return;
         canvasGroup.alpha = 0f;
+        ClearBricks();
+    }
+
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
+        StopMovement();
     }
 
     protected override void HandleMovement()

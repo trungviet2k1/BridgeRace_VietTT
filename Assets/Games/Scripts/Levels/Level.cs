@@ -1,19 +1,16 @@
 ﻿using Scriptable;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Level : MonoBehaviour
 {
     [Header("Level Settings")]
     [SerializeField] protected Transform[] startPoints;
     [SerializeField] protected Transform finishPoint;
+    [SerializeField] protected int botAmount;
 
-    [Header("List of floors")]
-    [SerializeField] protected Stage[] floors;
-
-    [Header("Characters")]
-    [SerializeField] private GameObject botPrefab;
+    [Header("List of Floors")]
+    [SerializeField] protected List<Stage> stages;
 
     private void Start()
     {
@@ -33,20 +30,22 @@ public class Level : MonoBehaviour
 
     public void OnInit()
     {
-        if (floors == null || floors.Length == 0) return;
+        if (stages == null || stages.Count == 0) return;
 
-        foreach (Stage floor in floors)
+        foreach (Stage stage in stages)
         {
-            floor.OnInit();
+            stage.OnInit();
         }
     }
 
     public void ResetLevel()
     {
-        foreach (Stage floor in floors)
+        if (stages == null || stages.Count == 0) return;
+
+        foreach (Stage stage in stages)
         {
-            floor.ResetBricks(floor.transform);
-            floor.GenerateBricks(floor.transform, FindObjectOfType<Player>(), FindObjectsOfType<Bot>());
+            stage.ResetBricks(gameObject.transform);
+            stage.GenerateBricks(stage.transform, FindObjectOfType<Player>(), FindObjectsOfType<Bot>());
         }
 
         SpawnPlayerAndBots();
@@ -60,22 +59,24 @@ public class Level : MonoBehaviour
         Transform botContainer = GameObject.Find("Bot").transform;
         if (botContainer == null) return;
 
-        if (startPoints.Length < 4) return;
+        if (startPoints.Length < 1) return;
 
         List<Transform> availableStartPoints = new(startPoints);
 
         // Set position for player
         Transform playerStartPoint = GetRandomStartPoint(availableStartPoints);
-        player.transform.position = playerStartPoint.position;
+        player.TF.position = playerStartPoint.position;
 
-        // Set positions for bots
+        int effectiveBotAmount = Mathf.Min(botAmount, availableStartPoints.Count);
+
         HashSet<ColorType> usedColors = new() { player.color, ColorType.Gray };
-        for (int i = 0; i < 3; i++)
+        List<Bot> bots = new();
+
+        for (int i = 0; i < effectiveBotAmount; i++)
         {
             Transform botStartPoint = GetRandomStartPoint(availableStartPoints);
-            //GameObject bot = Instantiate(botPrefab, botStartPoint.position, Quaternion.identity, botContainer.transform);
             Bot bot = HBPool.Spawn<Bot>(PoolType.Bot, botStartPoint.position, Quaternion.identity);
-            bot.transform.SetParent(botContainer);
+            bot.TF.SetParent(botContainer);
 
             Bot botCharacter = bot.GetComponent<Bot>();
             ColorType botColor;
@@ -86,21 +87,65 @@ public class Level : MonoBehaviour
 
             botCharacter.ChangeColor(botColor);
             usedColors.Add(botColor);
+            bots.Add(botCharacter);
+        }
+
+        SpawnPlayerAndBotsInStages(player, bots);
+    }
+
+    private void SpawnPlayerAndBotsInStages(Player player, List<Bot> bots)
+    {
+        foreach (Stage stage in stages)
+        {
+            stage.ResetBricks(gameObject.transform);
+            stage.GenerateBricks(stage.transform, player, bots.ToArray());
         }
     }
 
-    // Get random starting point
     private Transform GetRandomStartPoint(List<Transform> availableStartPoints)
     {
+        if (availableStartPoints.Count == 0) return null;
+
         int randomIndex = Random.Range(0, availableStartPoints.Count);
         Transform selectedPoint = availableStartPoints[randomIndex];
         availableStartPoints.RemoveAt(randomIndex);
         return selectedPoint;
     }
 
-    // Set random color for bots
     private ColorType GetRandomColor()
     {
-        return (ColorType)Random.Range(0, System.Enum.GetValues(typeof(ColorType)).Length);
+        return (ColorType)Random.Range(1, System.Enum.GetValues(typeof(ColorType)).Length);
+    }
+
+    private void Update()
+    {
+        foreach (Stage stage in stages)
+        {
+            if (IsCharacterOnStage(stage))
+            {
+                stage.GenerateBricks(stage.transform, FindObjectOfType<Player>(), FindObjectsOfType<Bot>());
+            }
+        }
+    }
+
+    private bool IsCharacterOnStage(Stage stage)
+    {
+        Character[] characters = stage.FindCharacters();
+        foreach (Character character in characters)
+        {
+            if (character != null)
+            {
+                Vector3 characterPosition = character.TF.position;
+                Ray ray = new(characterPosition + Vector3.up * 1f, Vector3.down);
+                if (Physics.Raycast(ray, out RaycastHit hit, 2f, LayerMask.GetMask("Ground")))
+                {
+                    if (hit.collider.transform.IsChildOf(stage.transform))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

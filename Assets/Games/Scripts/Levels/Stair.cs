@@ -33,7 +33,6 @@ public class Stair : MonoBehaviour
         {
             SetStairActive(true);
             ChangeStairColor(character.color);
-            ConsumeBrick(character);
             currentCharacter = character;
         }
     }
@@ -49,14 +48,6 @@ public class Stair : MonoBehaviour
         if (colorData == null) return;
         stairColor = colorType;
         meshRenderer.material = colorData.GetMat(colorType);
-    }
-
-    private void ConsumeBrick(Character character)
-    {
-        if (character != null && character.GetBrickCount() > 0)
-        {
-            character.RemoveBrick();
-        }
     }
 
     public Character GetCurrentCharacter()

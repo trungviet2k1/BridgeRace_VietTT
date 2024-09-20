@@ -19,10 +19,10 @@ public abstract class Character : GameUnit
     [SerializeField] protected GameObject brickPrefab;
 
     [HideInInspector] public Stage stage;
+    [HideInInspector] public LayerMask validLayerMask;
     protected List<GameObject> bricks = new();
 
     private string animName;
-    private LayerMask validLayerMask;
     private bool isOnValidSurface;
     private Vector3 lastPosition;
     private MeshRenderer cachedMeshRenderer;
@@ -34,7 +34,7 @@ public abstract class Character : GameUnit
         ChangeAnim(Constants.ANIM_IDLE);
 
         validLayerMask = LayerMask.GetMask("Ground", "Stair");
-        lastPosition = transform.position;
+        lastPosition = TF.position;
         isOnValidSurface = IsOnValidSurface();
     }
 
@@ -56,6 +56,8 @@ public abstract class Character : GameUnit
     }
 
     public virtual void OnInit() { }
+
+    public virtual void OnDespawn() { }
 
     protected abstract void HandleMovement();
 
@@ -100,10 +102,7 @@ public abstract class Character : GameUnit
         }
     }
 
-    public int GetBrickCount()
-    {
-        return bricks.Count;
-    }
+    public int GetBrickCount() => bricks.Count;
 
     public void RemoveBrick()
     {
@@ -127,17 +126,19 @@ public abstract class Character : GameUnit
     public bool CanMove(Vector3 nextPoint)
     {
         bool canMove = true;
-        if (Physics.Raycast(nextPoint + Vector3.up * 0.5f, Vector3.down, out RaycastHit hit, 2f, validLayerMask))
+        if (Physics.Raycast(nextPoint + Vector3.up * 0.35f, Vector3.down, out RaycastHit hit, 1f, validLayerMask))
         {
             Stair stair = hit.collider.GetComponent<Stair>();
             if (stair != null && stair.stairColor != color && GetBrickCount() > 0)
             {
                 stair.ChangeStairColor(color);
+                RemoveBrick();
                 stair.ActivateStair(this);
             }
 
             if (stair != null && stair.stairColor != color && GetBrickCount() == 0)
             {
+                ChangeAnim(Constants.ANIM_IDLE);
                 canMove = false;
             }
         }
@@ -146,8 +147,8 @@ public abstract class Character : GameUnit
 
     private bool IsOnValidSurface()
     {
-        Ray ray = new(transform.position + Vector3.up * 1f, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 2f, validLayerMask))
+        Ray ray = new(TF.position + Vector3.up * 0.35f, Vector3.down);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1f, validLayerMask))
         {
             if (cachedMeshRenderer == null || cachedMeshRenderer.gameObject != hitInfo.collider.gameObject)
             {
@@ -161,10 +162,10 @@ public abstract class Character : GameUnit
 
     private bool HasMoved()
     {
-        float distanceMoved = (transform.position - lastPosition).sqrMagnitude;
+        float distanceMoved = (TF.position - lastPosition).sqrMagnitude;
         if (distanceMoved > 0.001f)
         {
-            lastPosition = transform.position;
+            lastPosition = TF.position;
             return true;
         }
         return false;

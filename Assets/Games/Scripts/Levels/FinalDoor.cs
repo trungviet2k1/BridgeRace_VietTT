@@ -16,20 +16,20 @@ public class FinalDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Character player) && level != null && isBridgeComplete)
+        if (other.TryGetComponent(out Character character) && level != null && isBridgeComplete)
         {
-            StartCoroutine(HandlePlayerArrival(player));
+            StartCoroutine(HandleCharacterArrival(character));
         }
     }
 
-    private IEnumerator HandlePlayerArrival(Character player)
+    private IEnumerator HandleCharacterArrival(Character character)
     {
         yield return new WaitForSeconds(1f);
         Vector3 finishPoint = level.GetFinishPoint();
-        player.transform.position = finishPoint;
-        player.ChangeAnim(Constants.ANIM_DANCE);
-        player.transform.eulerAngles = Vector3.up * 180;
-        player.OnInit();
+        character.transform.position = finishPoint;
+        character.ChangeAnim(Constants.ANIM_DANCE);
+        character.transform.eulerAngles = Vector3.up * 180;
+        character.OnInit();
 
         yield return new WaitForSeconds(5f);
         LevelManagement.Ins.LoadNextLevel();

@@ -6,7 +6,7 @@ public class PatrolState : IState<Bot>
 
     public void OnEnter(Bot bot)
     {
-        targetBrick = Random.Range(3, 8);
+        targetBrick = Random.Range(7, 10);
         bot.SeekBrick();
     }
 
@@ -22,7 +22,7 @@ public class PatrolState : IState<Bot>
         {
             if (bot.brickPositions.Count > 0)
             {
-                bot.MoveToBrickPosition();
+                bot.BotMovement();
             }
             else
             {
