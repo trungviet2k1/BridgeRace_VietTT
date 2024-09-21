@@ -16,7 +16,7 @@ public class Stage : MonoBehaviour
     private void Start()
     {
         OnInit();
-        ResetBricks(gameObject.transform);
+        ResetBricks(transform);
     }
 
     public void OnInit()
@@ -41,10 +41,11 @@ public class Stage : MonoBehaviour
 
         if (playerCharacter == null || bots.Count < 1) return;
 
-        if (bricksGenerated)
+        if (!bricksGenerated)
         {
-            ResetBricks(gameObject.transform);
-            GenerateBricks(gameObject.transform, playerCharacter, bots.ToArray());
+            ResetBricks(transform);
+            GenerateBricks(transform, playerCharacter, bots.ToArray());
+            bricksGenerated = true;
         }
 
     }
@@ -172,8 +173,8 @@ public class Stage : MonoBehaviour
     {
         for (int i = 0; i < list.Count; i++)
         {
-            int randomIndex = Random.Range(i, list.Count);
             T temp = list[i];
+            int randomIndex = Random.Range(i, list.Count);
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Drawing;
+using UnityEngine;
 
 public class BuildState : IState<Bot>
 {
@@ -12,17 +13,24 @@ public class BuildState : IState<Bot>
         if (Physics.Raycast(bot.TF.position + Vector3.up * 0.35f, Vector3.down, out RaycastHit hit, 1f, bot.validLayerMask))
         {
             Stair stair = hit.collider.GetComponent<Stair>();
+            if (stair == null || stair.stairColor == bot.color || stair.parentBridge.IsBridgeComplete()) return;
 
-            if (stair != null && !stair.isActive && stair.stairColor != bot.color && bot.GetBrickCount() > 0)
+            if (!stair.parentBridge.IsBridgeComplete())
             {
-                stair.ChangeStairColor(bot.color);
-                bot.RemoveBrick();
-                stair.ActivateStair(bot);
+                if (bot.GetBrickCount() > 0)
+                {
+                    stair.ActivateStair(bot);
+                    stair.ChangeStairColor(bot.color);
+                    bot.RemoveBrick();
+                }
+                else
+                {
+                    bot.StopMove();
+                    bot.ChangeState(new PatrolState());
+                }
             }
-
-            if (stair != null && !stair.isActive && stair.stairColor != bot.color && bot.GetBrickCount() == 0)
+            else
             {
-                bot.StopMove();
                 bot.ChangeState(new PatrolState());
             }
         }

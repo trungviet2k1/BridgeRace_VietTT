@@ -31,8 +31,6 @@ public abstract class Character : GameUnit
     {
         OnInit();
         ChangeColor(color);
-        ChangeAnim(Constants.ANIM_IDLE);
-
         validLayerMask = LayerMask.GetMask("Ground", "Stair");
         lastPosition = TF.position;
         isOnValidSurface = IsOnValidSurface();
@@ -55,7 +53,10 @@ public abstract class Character : GameUnit
         }
     }
 
-    public virtual void OnInit() { }
+    public virtual void OnInit()
+    {
+        ClearBricks();
+    }
 
     public virtual void OnDespawn() { }
 
@@ -125,24 +126,29 @@ public abstract class Character : GameUnit
 
     public bool CanMove(Vector3 nextPoint)
     {
-        bool canMove = true;
-        if (Physics.Raycast(nextPoint + Vector3.up * 0.35f, Vector3.down, out RaycastHit hit, 1f, validLayerMask))
+        if (!Physics.Raycast(nextPoint + Vector3.up * 0.35f, Vector3.down, out RaycastHit hit, 1f, validLayerMask)) return true;
+
+        Stair stair = hit.collider.GetComponent<Stair>();
+        if (stair == null || stair.stairColor == color) return true;
+
+        if (!stair.parentBridge.IsBridgeComplete())
         {
-            Stair stair = hit.collider.GetComponent<Stair>();
-            if (stair != null && stair.stairColor != color && GetBrickCount() > 0)
+            if (GetBrickCount() > 0)
             {
+                stair.ActivateStair(this);
                 stair.ChangeStairColor(color);
                 RemoveBrick();
-                stair.ActivateStair(this);
+                return true;
             }
-
-            if (stair != null && stair.stairColor != color && GetBrickCount() == 0)
+            else
             {
                 ChangeAnim(Constants.ANIM_IDLE);
-                canMove = false;
+                return false;
             }
         }
-        return canMove;
+
+        ChangeAnim(Constants.ANIM_IDLE);
+        return false;
     }
 
     private bool IsOnValidSurface()

@@ -858,8 +858,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 5738390980046567186, guid: 8468a4c2ea72bad4f9bace20eb31b7e4, type: 3}
-  - {fileID: 5738390980046567186, guid: 58125aa3c4f280a4487f11e689d2945a, type: 3}
-  - {fileID: 5738390980046567186, guid: d7492f759d0245746932224fed5f857a, type: 3}
+  - {fileID: 5738390980046567186, guid: 1730acce3517f024a9b84fb3cfa6e775, type: 3}
+  - {fileID: 5738390980046567186, guid: 9063b0ee899386c419d0e5b23676ef0a, type: 3}
   characters: {fileID: 669810453}
   currentLevel: {fileID: 0}
 --- !u!4 &543450652250492803 stripped

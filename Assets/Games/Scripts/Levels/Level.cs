@@ -12,9 +12,13 @@ public class Level : MonoBehaviour
     [Header("List of Floors")]
     [SerializeField] protected List<Stage> stages;
 
+    private Player player;
+    private readonly List<Bot> bots = new();
+
     private void Start()
     {
         OnInit();
+        player = FindObjectOfType<Player>();
         SpawnPlayerAndBots();
     }
 
@@ -40,26 +44,38 @@ public class Level : MonoBehaviour
 
     public void ResetLevel()
     {
-        if (stages == null || stages.Count == 0) return;
+        if (player == null || stages == null || stages.Count == 0) return;
 
         foreach (Stage stage in stages)
         {
             stage.ResetBricks(gameObject.transform);
-            stage.GenerateBricks(stage.transform, FindObjectOfType<Player>(), FindObjectsOfType<Bot>());
+            stage.GenerateBricks(stage.transform, player, bots.ToArray());
+        }
+
+        player.OnInit();
+
+        foreach (Bot bot in bots)
+        {
+            bot.OnInit();
         }
 
         SpawnPlayerAndBots();
     }
 
+    public void EndLevel()
+    {
+        for (int i = 0; i < bots.Count; i++)
+        {
+            bots[i].ChangeState(null);
+            bots[i].StopMove();
+            bots.Clear();
+        }
+    }
+
     private void SpawnPlayerAndBots()
     {
-        Player player = FindObjectOfType<Player>();
-        if (player == null) return;
-
         Transform botContainer = GameObject.Find("Bot").transform;
-        if (botContainer == null) return;
-
-        if (startPoints.Length < 1) return;
+        if (startPoints.Length < 1 || player == null || botContainer == null) return;
 
         List<Transform> availableStartPoints = new(startPoints);
 
@@ -68,9 +84,7 @@ public class Level : MonoBehaviour
         player.TF.position = playerStartPoint.position;
 
         int effectiveBotAmount = Mathf.Min(botAmount, availableStartPoints.Count);
-
         HashSet<ColorType> usedColors = new() { player.color, ColorType.Gray };
-        List<Bot> bots = new();
 
         for (int i = 0; i < effectiveBotAmount; i++)
         {
@@ -97,7 +111,7 @@ public class Level : MonoBehaviour
     {
         foreach (Stage stage in stages)
         {
-            stage.ResetBricks(gameObject.transform);
+            stage.ResetBricks(transform);
             stage.GenerateBricks(stage.transform, player, bots.ToArray());
         }
     }
@@ -123,7 +137,7 @@ public class Level : MonoBehaviour
         {
             if (IsCharacterOnStage(stage))
             {
-                stage.GenerateBricks(stage.transform, FindObjectOfType<Player>(), FindObjectsOfType<Bot>());
+                stage.GenerateBricks(stage.transform, player, bots.ToArray());
             }
         }
     }

@@ -24,12 +24,12 @@ public class FinalDoor : MonoBehaviour
 
     private IEnumerator HandleCharacterArrival(Character character)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0f);
         Vector3 finishPoint = level.GetFinishPoint();
-        character.transform.position = finishPoint;
+        character.TF.position = finishPoint;
+        character.TF.eulerAngles = Vector3.up * 180;
         character.ChangeAnim(Constants.ANIM_DANCE);
-        character.transform.eulerAngles = Vector3.up * 180;
-        character.OnInit();
+        level.EndLevel();
 
         yield return new WaitForSeconds(5f);
         LevelManagement.Ins.LoadNextLevel();

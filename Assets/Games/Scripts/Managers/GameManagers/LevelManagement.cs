@@ -17,10 +17,10 @@ public class LevelManagement : Singleton<LevelManagement>
 
     public void OnInit()
     {
-        characters.OnInit();
         if (currentLevel == null) return;
+        characters.OnInit();
         characters.TF.position = currentLevel.GetStartPoint();
-        characters.ChangeAnim(Constants.ANIM_IDLE);
+        characters.ChangeAnim(Constants.ANIM_RUN);
     }
 
     public void OnReset()
@@ -53,8 +53,6 @@ public class LevelManagement : Singleton<LevelManagement>
 
     public void LoadNextLevel()
     {
-        characters.ClearBricks();
-
         levelIndex++;
         OnReset();
         OnLoadLevel(levelIndex);

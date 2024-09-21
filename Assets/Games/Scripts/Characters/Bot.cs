@@ -20,14 +20,16 @@ public class Bot : Character
 
         navMeshAgent.speed = GetMoveSpeed();
         ChangeState(new PatrolState());
+        navMeshAgent.enabled = true;
+        navMeshAgent.ResetPath();
         brickPositions.Clear();
-        ClearBricks();
     }
 
     public override void OnDespawn()
     {
         base.OnDespawn();
         currentState = null;
+        StopMove();
     }
 
     public void SetDestination(Vector3 position)
@@ -40,10 +42,10 @@ public class Bot : Character
 
     private void Update()
     {
+        UpdateCurrentStage();
+        
         if (currentState == null) return;
         currentState.OnExecute(this);
-        CanMove(TF.position);
-        UpdateCurrentStage();
     }
 
     public void ChangeState(IState<Bot> state)
@@ -55,17 +57,17 @@ public class Bot : Character
 
     public void SeekBrick()
     {
-        if (currentStage == null || brickPositions == null) return;
+        if (currentStage == null) return;
+
+        brickPositions.Clear();
 
         List<Brick> bricks = currentStage.FindBricksWithColor(color);
         foreach (Brick brick in bricks)
         {
-            brickPositions.Add(brick.gameObject);
-        }
-
-        if (currentState == null || currentState is not PatrolState)
-        {
-            ChangeState(new PatrolState());
+            if (brick.gameObject.activeSelf)
+            {
+                brickPositions.Add(brick.gameObject);
+            }
         }
     }
 
@@ -75,7 +77,7 @@ public class Bot : Character
 
         int randomIndex = Random.Range(0, brickPositions.Count);
         GameObject targetBrick = brickPositions[randomIndex];
-        if (targetBrick == null) return;
+        if (targetBrick == null || !targetBrick.activeSelf) return;
 
         Vector3 targetPosition = targetBrick.transform.position;
         if (CanMove(targetPosition))
@@ -115,7 +117,7 @@ public class Bot : Character
         return false;
     }
 
-    internal void StopMove()
+    public void StopMove()
     {
         ChangeAnim(Constants.ANIM_IDLE);
         navMeshAgent.isStopped = true;

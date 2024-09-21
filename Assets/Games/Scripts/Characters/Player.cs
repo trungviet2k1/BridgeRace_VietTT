@@ -18,7 +18,7 @@ public class Player : Character
         base.OnInit();
         if (joystick == null && canvasGroup == null) return;
         canvasGroup.alpha = 0f;
-        ClearBricks();
+        TF.position = Vector3.zero;
     }
 
     public override void OnDespawn()

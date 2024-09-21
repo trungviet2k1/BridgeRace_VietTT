@@ -5,17 +5,19 @@ public class Stair : MonoBehaviour
 {
     [Header("Stair Settings")]
     public ColorType stairColor;
-    [SerializeField] private Renderer meshRenderer;
-    [SerializeField] private ColorData colorData;
-    [SerializeField] private LayerMask characterLayerMask;
+    [SerializeField] protected Renderer meshRenderer;
+    [SerializeField] protected ColorData colorData;
+    [SerializeField] protected LayerMask characterLayerMask;
 
     [HideInInspector] public bool isActive;
+    [HideInInspector] public Bridge parentBridge;
     private Character currentCharacter;
 
     private void Start()
     {
         if (meshRenderer == null) return;
         SetStairActive(false);
+        parentBridge = GetComponentInParent<Bridge>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +25,7 @@ public class Stair : MonoBehaviour
         Character character = other.GetComponent<Character>();
         if (character != null && ((1 << other.gameObject.layer) & characterLayerMask) != 0)
         {
+            if (parentBridge != null && parentBridge.bridgeCompleter != null && parentBridge.bridgeCompleter != character) return;
             ActivateStair(character);
         }
     }

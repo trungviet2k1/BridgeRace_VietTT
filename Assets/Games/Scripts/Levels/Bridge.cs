@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bridge : MonoBehaviour
 {
-    [SerializeField] private List<Stair> stairs;
-    [SerializeField] private List<SecondDoor> secondDoors;
-    [SerializeField] private FinalDoor finalDoor;
+    [SerializeField] protected List<Stair> stairs;
+    [SerializeField] protected List<SecondDoor> secondDoors;
+    [SerializeField] protected FinalDoor finalDoor;
 
-    private Character bridgeCompleter;
+    [HideInInspector] public Character bridgeCompleter;
 
     private void Start()
     {
@@ -21,14 +21,16 @@ public class Bridge : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
         }
-        OpenSecondDoors();
+
         if (finalDoor != null)
         {
             finalDoor.SetBridgeComplete();
         }
+
+        OpenSecondDoors();
     }
 
-    private bool IsBridgeComplete()
+    public bool IsBridgeComplete()
     {
         foreach (var stair in stairs)
         {
@@ -36,8 +38,7 @@ public class Bridge : MonoBehaviour
             {
                 return false;
             }
-
-            if (bridgeCompleter == null)
+            else
             {
                 bridgeCompleter = stair.GetCurrentCharacter();
             }
@@ -53,5 +54,7 @@ public class Bridge : MonoBehaviour
         {
             door.ChangeColorAndHide(bridgeCompleter);
         }
+
+        Debug.Log(bridgeCompleter);
     }
 }
